@@ -1,0 +1,369 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Sanika ❤️</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:'Segoe UI',sans-serif;
+  background:linear-gradient(135deg,#ffe1eb,#fff0f3,#ffd1dc);
+  color:#6e1837;
+  min-height:100vh;
+  overflow-x:hidden;
+}
+.page{
+  display:none;
+  min-height:100vh;
+  padding:35px 18px;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  text-align:center;
+}
+.page.active{display:flex}
+h1{font-size:clamp(30px,7vw,48px);margin-bottom:15px}
+h2{font-size:27px;margin-bottom:18px}
+p{font-size:17px;line-height:1.7;margin:10px 0}
+.heart{font-size:65px;animation:beat 1.2s infinite}
+@keyframes beat{50%{transform:scale(1.2)}}
+.card{
+  width:100%;max-width:520px;
+  background:#ffffffd9;
+  padding:28px 22px;
+  border-radius:25px;
+  box-shadow:0 10px 35px #b94c7130;
+  margin:12px auto;
+}
+button{
+  border:0;border-radius:30px;
+  padding:14px 25px;
+  margin:8px;
+  background:#e83e70;color:white;
+  font-size:16px;font-weight:bold;
+  cursor:pointer;
+  transition:.2s;
+}
+button:hover{transform:scale(1.04);background:#c92358}
+button:disabled{opacity:.5;cursor:not-allowed}
+.option{
+  display:block;width:100%;
+  background:#fff0f5;color:#8b2348;
+  border:2px solid #f5c3d3;
+  text-align:left;
+  margin:10px 0;
+  border-radius:14px;
+}
+.option.selected{border-color:#e83e70;background:#ffdae6}
+.option.correct{background:#d7f5df;border-color:#269b55;color:#176b35}
+.option.wrong{background:#fbdada;border-color:#d34b4b;color:#a32626}
+#feedback{font-weight:bold;margin:15px 0;min-height:28px}
+.progress{
+  width:100%;height:9px;background:#f6d4e0;
+  border-radius:20px;margin:15px 0;overflow:hidden;
+}
+#progressBar{height:100%;width:0;background:#e83e70;transition:.3s}
+.small{font-size:14px;color:#9c5270}
+.envelope{font-size:90px;cursor:pointer;transition:.3s}
+.envelope:hover{transform:scale(1.1)}
+.letter{display:none;text-align:left;white-space:pre-line}
+.letter.open{display:block}
+.heart-bg{
+ position:fixed;bottom:-30px;pointer-events:none;
+ animation:float 7s linear infinite;opacity:.6;z-index:-1;
+}
+@keyframes float{
+  to{transform:translateY(-110vh) rotate(360deg);opacity:0}
+}
+</style>
+</head>
+
+<body>
+
+<!-- PAGE 1: WELCOME -->
+<section class="page active" id="welcome">
+  <div class="card">
+    <div class="heart">❤️</div>
+    <p>Something Special For You</p>
+    <h1>Welcome Sanika!</h1>
+    <p>My world is more beautiful because you are in it. 🥹</p>
+    <p>आज तुझ्यासाठी एक छोटंसं surprise आहे...</p>
+    <button onclick="showPage('quiz')">Open Your Surprise 💕</button>
+  </div>
+</section>
+
+<!-- PAGE 2: QUIZ -->
+<section class="page" id="quiz">
+  <div class="card">
+    <div class="heart">💗</div>
+    <h2>How Well Do You Know Me?</h2>
+    <p>Let's see how much you know about me, Sanika! 😘</p>
+
+    <div class="progress"><div id="progressBar"></div></div>
+    <p class="small" id="questionNumber">Question 1 of 10</p>
+    <h2 id="question">Question here</h2>
+    <div id="options"></div>
+    <div id="feedback"></div>
+    <button id="checkBtn" onclick="checkAnswer()" disabled>
+      Check My Answer ❤️
+    </button>
+    <button id="nextBtn" onclick="nextQuestion()" style="display:none">
+      Next Question →
+    </button>
+    <button onclick="showPage('welcome')" style="background:#ad7790">
+      Back
+    </button>
+  </div>
+</section>
+
+<!-- PAGE 3: LOVE LETTER -->
+<section class="page" id="letterPage">
+  <div class="card">
+    <div class="heart">💌</div>
+    <h1>A Secret Love Letter</h1>
+    <p>Sanika, someone has written something special for you...</p>
+    <div class="envelope" onclick="openLetter()">💌</div>
+    <p class="small">Tap the envelope to open your letter</p>
+
+    <div class="letter" id="loveLetter">
+      <h2>Dear Sanika ❤️</h2>
+      माझ्या आयुष्यात तू आहेस, हीच माझ्यासाठी खूप खास गोष्ट आहे.
+
+      तुझं हसणं, तुझं बोलणं आणि तुझं असणं माझ्यासाठी खूप महत्त्वाचं आहे.
+
+      कधी भांडणं होतील, कधी राग येईल, पण त्या सगळ्यापेक्षा आपलं नातं माझ्यासाठी जास्त महत्त्वाचं आहे.
+
+      मला तुझ्यासोबत खूप सुंदर आठवणी बनवायच्या आहेत आणि प्रत्येक क्षण खास करायचा आहे.
+
+      Thank you for being in my life.
+
+      I Love You So Much, Baby! ❤️
+
+      Forever Yours 💕
+    </div>
+    <button onclick="showPage('forever')">One Last Surprise 💍</button>
+  </div>
+</section>
+
+<!-- PAGE 4: FOREVER -->
+<section class="page" id="forever">
+  <div class="card">
+    <div class="heart">💖</div>
+    <h1>One Last Question...</h1>
+    <p>Sanika, will you be my forever Valentine? 🥹</p>
+    <button onclick="celebrate()">YES ❤️</button>
+    <button onclick="celebrate()">YES, ALWAYS 💕</button>
+    <div id="finalMessage" style="display:none">
+      <h1>Yayyyy! 🥰</h1>
+      <p>You are my favourite person, my happiness and my special one.</p>
+      <p>I Love You, Sanika! ❤️</p>
+      <div class="heart">💞</div>
+    </div>
+  </div>
+</section>
+
+<script>
+
+// QUIZ QUESTIONS
+const questions = [
+{
+ q:"माझा favourite colour कोणता आहे?",
+ o:["Black","Red","Blue","White"],
+ a:1
+},
+{
+ q:"माझं favourite food कोणतं आहे?",
+ o:["Chinese","South Indian","Non-Veg","Pizza"],
+ a:2
+},
+{
+ q:"माझा favourite actor कोण आहे?",
+ o:["Shah Rukh Khan","Salman Khan","Hrithik Roshan","Ranbir Kapoor"],
+ a:2
+},
+{
+ q:"मला सर्वात जास्त काय करायला आवडतं?",
+ o:["Travelling","Sleeping","Dancing","Shopping"],
+ a:1
+},
+{
+ q:"माझा स्वभाव कसा आहे?",
+ o:["Angry Soul","Silent Soul","All in One Soul","Funny Soul"],
+ a:2
+},
+{
+ q:"मला तुझ्यातली सर्वात आवडणारी गोष्ट कोणती?",
+ o:["तुझं Smile","तुझे डोळे","तुझं बोलणं","तू ❤️"],
+ a:3
+},
+{
+ q:"मी रागावलो तर मला कसं शांत करता येईल?",
+ o:["Sorry बोलून","Chocolate देऊन","Kiss करून 😘","मला एकटं सोडून"],
+ a:2
+},
+{
+ q:"आपण दोघांनी कुठे फिरायला जायला हवं?",
+ o:["Manali","Goa","Mumbai","Kashmir"],
+ a:1
+},
+{
+ q:"माझं तुझ्यासाठी खास nickname काय आहे?",
+ o:["Sweetheart","Princess","Baby","Cutie"],
+ a:2
+},
+{
+ q:"मी तुझ्यासोबत perfect date कशी plan करेन?",
+ o:[
+   "Candlelight Dinner 🕯️",
+   "Beach Date 🌊",
+   "Long Drive 🚗",
+   "तुझ्यासोबत कुठेही ❤️"
+ ],
+ a:3
+}
+];
+
+// CHANGE QUESTION 10 ANSWER HERE:
+// a:0 = Candlelight Dinner
+// a:1 = Beach Date
+// a:2 = Long Drive
+// a:3 = तुझ्यासोबत कुठेही
+
+let current=0;
+let score=0;
+let selected=null;
+let answered=false;
+
+function showPage(id){
+ document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+ document.getElementById(id).classList.add('active');
+ window.scrollTo(0,0);
+ if(id==='quiz' && current===0 && !answered){
+   loadQuestion();
+ }
+}
+
+function loadQuestion(){
+ selected=null;
+ answered=false;
+ const q=questions[current];
+
+ document.getElementById('questionNumber').innerText=
+ `Question ${current+1} of ${questions.length}`;
+
+ document.getElementById('question').innerText=q.q;
+ document.getElementById('progressBar').style.width=
+ `${(current/questions.length)*100}%`;
+
+ document.getElementById('feedback').innerText='';
+ document.getElementById('checkBtn').style.display='inline-block';
+ document.getElementById('checkBtn').disabled=true;
+ document.getElementById('nextBtn').style.display='none';
+
+ const box=document.getElementById('options');
+ box.innerHTML='';
+
+ q.o.forEach((option,i)=>{
+  const btn=document.createElement('button');
+  btn.className='option';
+  btn.innerText=String.fromCharCode(65+i)+". "+option;
+  btn.onclick=()=>{
+   if(answered)return;
+   selected=i;
+   document.querySelectorAll('.option').forEach(b=>b.classList.remove('selected'));
+   btn.classList.add('selected');
+   document.getElementById('checkBtn').disabled=false;
+  };
+  box.appendChild(btn);
+ });
+}
+
+function checkAnswer(){
+ if(selected===null || answered)return;
+ answered=true;
+
+ const q=questions[current];
+ const buttons=document.querySelectorAll('.option');
+
+ buttons[q.a].classList.add('correct');
+
+ if(selected===q.a){
+  score++;
+  document.getElementById('feedback').innerText=
+   "❤️ Correct Answer! अगदी बरोबर!";
+  document.getElementById('feedback').style.color="green";
+ }else{
+  buttons[selected].classList.add('wrong');
+  document.getElementById('feedback').innerText=
+   "😜 Oops! Wrong Answer! Correct: "+q.o[q.a];
+  document.getElementById('feedback').style.color="#c52d4b";
+ }
+
+ document.getElementById('checkBtn').style.display='none';
+ document.getElementById('nextBtn').style.display='inline-block';
+
+ if(current===questions.length-1){
+  document.getElementById('nextBtn').innerText="See My Score ❤️";
+ }
+}
+
+function nextQuestion(){
+ if(!answered)return;
+
+ current++;
+
+ if(current<questions.length){
+  loadQuestion();
+ }else{
+  showResult();
+ }
+}
+
+function showResult(){
+ document.getElementById('questionNumber').innerText="Quiz Completed!";
+ document.getElementById('progressBar').style.width="100%";
+ document.getElementById('question').innerHTML=
+ `You scored ${score} / ${questions.length} ❤️`;
+ document.getElementById('options').innerHTML=
+ `<h2>${score>=8?"Wowww! You Know Me So Well! 🥹":"Awww! More time together, more memories! 💕"}</h2>
+ <p>But remember, my love for you is beyond any score!</p>`;
+ document.getElementById('feedback').innerText=
+ "I Love You, Sanika! ❤️";
+ document.getElementById('checkBtn').style.display='none';
+ document.getElementById('nextBtn').style.display='none';
+
+ const btn=document.createElement('button');
+ btn.innerText="Continue to Love Letter 💌";
+ btn.onclick=()=>showPage('letterPage');
+ document.getElementById('options').appendChild(btn);
+}
+
+function openLetter(){
+ document.getElementById('loveLetter').classList.add('open');
+}
+
+function celebrate(){
+ document.getElementById('finalMessage').style.display='block';
+}
+
+// FLOATING HEARTS
+function createHeart(){
+ const heart=document.createElement('div');
+ heart.className='heart-bg';
+ heart.innerText=['❤️','💕','💗','💖','💘'][Math.floor(Math.random()*5)];
+ heart.style.left=Math.random()*100+'vw';
+ heart.style.fontSize=(15+Math.random()*25)+'px';
+ heart.style.animationDuration=(5+Math.random()*5)+'s';
+ document.body.appendChild(heart);
+ setTimeout(()=>heart.remove(),10000);
+}
+setInterval(createHeart,700);
+
+loadQuestion();
+
+</script>
+</body>
+</html>
